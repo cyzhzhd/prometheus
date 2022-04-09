@@ -13,7 +13,8 @@ LAST = Gauge('hello_worlds_last_time_seconds',
 LATENCY = Summary('hello_world_latency_seconds',
                   'Time for a request Hello World.')
 LATENCY2 = Histogram('hello_world_latency_seconds_hist',
-                     'Time for a request Hello World.')
+                     'Time for a request Hello World.',
+                     buckets=[0.0001, 0.0002, 0.0005, 0.001, 0.01, 0.1])
 
 
 class MyHandler(http.server.BaseHTTPRequestHandler):
