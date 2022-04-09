@@ -1,7 +1,7 @@
 import http.server
 import random
-from time import time
-from prometheus_client import Histogram, start_http_server, Counter, Gauge, Summary
+import time
+from prometheus_client import start_http_server, Counter, Gauge, Summary
 
 REQUESTS = Counter('hello_worlds_total', 'Hello Worlds requested.')
 EXCEPTIONS = Counter('hello_worlds_exceptions_total',
