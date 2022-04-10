@@ -2,6 +2,7 @@ version: '3.7'
 
 volumes:
     prometheus_data: {}
+    grafana_data: {}
 
 services:
   prometheus:
@@ -48,3 +49,14 @@ services:
       - USER_NAME=${USER_NAME}
       - SLACK_API_URL=${SLACK_API_URL}
       - SLACK_CHANNEL=${SLACK_CHANNEL}
+
+  grafana:
+    image: grafana/grafana
+    container_name: grafana
+    depends_on:
+      - prometheus
+    ports:
+      - 3000:3000
+    volumes:
+      - grafana_data:/var/lib/grafana
+    restart: always
